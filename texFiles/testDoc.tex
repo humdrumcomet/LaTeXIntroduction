@@ -1,7 +1,7 @@
-% arara: pdflatex
+% arara: pdflatex: { shell: yes }
 % arara: biber
-% arara: pdflatex
-% arara: pdflatex
+% arara: pdflatex: { shell: yes }
+% arara: pdflatex: { shell: yes }
 
 \documentclass[hidelinks, 12pt]{article}%
 
@@ -13,34 +13,19 @@
 \usepackage{amssymb}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{xcolor}
-\usepackage{chemformula}
 \usepackage[style=ieee,backend=biber]{biblatex}
-\usepackage{csvsimple}
-\usepackage{siunitx}
 \usepackage{float}
 \usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{csvsimple}
+\usepackage{siunitx}
+\DeclareSIUnit{\torr}{Torr} % Custom unit definition
 \usepackage{minted}
+\setminted{linenos, autogobble, fontsize=\footnotesize, breaklines=true}
+\usepackage{chemformula}
+\usepackage{xcolor}
 
 \addbibresource[location=local]{references.bib}
-
-\definecolor{mygreen}{rgb}{0,0.6,0}
-\definecolor{mygray}{rgb}{0.5,0.5,0.5}
-\definecolor{mymauve}{rgb}{0.58,0,0.82}
-\lstset{%
-    backgroundcolor=\color{white}, % choose the background color
-    breaklines=true, % automatic line breaking only at whitespace
-    captionpos=b, % sets the caption-position to bottom
-    commentstyle=\color{mygreen}, % comment style
-    escapeinside={\%*}{*)}, % if you want to add LaTeX within your code
-    keywordstyle=\color{blue}, % keyword style
-    stringstyle=\color{mymauve}, % string literal style
-    tabsize=2, % Set tabs to be displayed as 2 spaces
-    showstringspaces=false, % Don't show string spaces as special characters
-    basicstyle=\linespread{1}\footnotesize, % size of fonts used for the code and spacing on the lines (force to 1)
-    literate={\ \ }{{}}1, % Convert two spaces to 1 (for soft tab)
-    caption={\protect\filename@parse{\lstname}\protect\filename@base\text{.}\protect\filename@ext} % give filename as caption
-}
 
 \begin{document}
     \begin{center}
@@ -48,12 +33,11 @@
         {\fontsize{300}{50}\selectfont {\bfseries Hello \LaTeX\\}}
         \vspace{3cm}
         {\LARGE An Introduction to the\\
-        Typesetting Tool\\}
-        \vspace{10cm}
+            Typesetting Tool\\}
+        \vspace{9cm}
     \end{center}
     \begin{raggedleft}
         {\Large Aaron English\\
-            and\\
             Ghassan Arnouk\\
             Date: \today\\}
     \end{raggedleft}
@@ -66,15 +50,20 @@
         \begin{itemize}
             \item High quality documents
             \item Automation
-            \item Widely available and extrodinarily flexible
+            \item Widely available and extraordinarily flexible
             \item Open-Source (and free)
             \item Enormous and extremely helpful user base
-            \item Nearly unlimited skillcap
+                \begin{itemize}
+                    \item \href{https://www.overleaf.com/learn}{Overleaf guides}
+                    \item \href{https://tex.stackexchange.com/}{TeX Stack Exchange}
+                    \item \href{https://www.ctan.org/}{CTAN - Comprehensive TeX Archive Network}
+                \end{itemize}
+            \item Nearly unlimited skillcap - actual benefits to improving
         \end{itemize}
 
 
     \section{Base Packages}
-        There are a few base packages that you should always import:
+        There are a few base packages that you should (almost) always import:
         \begin{enumerate}
             \item import
             \item geometry
@@ -88,20 +77,40 @@
             \item float
             \item graphicx
         \end{enumerate}
-        
-        \begin{lstlisting}[language={[LaTeX]TeX}]
-            \usepackage{import}
-            \usepackage[left=1in, right=1in, top=1in, bottom=1in]{geometry}
-            \usepackage{hyperref}
-            \usepackage[tbtags]{amsmath}
-            \usepackage{amsfonts}
-            \usepackage{amssymb}
-            \usepackage[utf8]{inputenc}
-            \usepackage[T1]{fontenc}
-            \usepackage[style=ieee,backend=biber]{biblatex}
-            \usepackage{float}
-            \usepackage{graphicx}
-        \end{lstlisting}
+        ...And a few that you'll typically include (and are used to prepare this document).
+        \begin{enumerate}
+            \item booktabs - Pretty professional tables
+            \item csvsimple - Simplify table generation
+            \item siunitx - Nice, clean, units
+            \item minted - Beautiful blocks of highlighted code thanks to Pygments
+            \item chemformula - Convenient chemical equation display
+            \item xcolor - Apply colours to words and stuff
+        \end{enumerate}
+
+        \begin{listing}[H]
+            \centering
+            \begin{minted}{tex}
+                \usepackage{import}
+                \usepackage{geometry}
+                \usepackage{hyperref}
+                \usepackage[tbtags]{amsmath}
+                \usepackage{amsfonts}
+                \usepackage{amssymb}
+                \usepackage[utf8]{inputenc}
+                \usepackage[T1]{fontenc}
+                \usepackage[style=ieee,backend=biber]{biblatex}
+                \usepackage{float}
+                \usepackage{graphicx}
+                \usepackage{booktabs}
+                \usepackage{csvsimple}
+                \usepackage{siunitx}
+                \usepackage{minted}
+                \usepackage{chemformula}
+                \usepackage{xcolor}
+            \end{minted}
+            \caption{Code to include packages in a \LaTeX document (as used in this document)}
+            \label{lst:packages}
+        \end{listing}
 
     \section{Sections...}
         \subsection{...and subsections...}
@@ -110,18 +119,18 @@
     \section{Equations}
         How about some equations?
         \begin{align}
-            \delta &= - \frac{B^{2}}{180,000} + \frac{B}{173} + 0.5\nonumber\\
-            &= - \frac{533^{2}}{180,000} + \frac{533}{173} + 0.5 \nonumber\\
-            &= 2.0 \nonumber
+            \delta & = - \frac{B^{2}}{180,000} + \frac{B}{173} + 0.5\nonumber      \\
+                   & = - \frac{533^{2}}{180,000} + \frac{533}{173} + 0.5 \nonumber \\
+                   & = 2.0 \nonumber
         \end{align}
-        
+
         Or even a matrix
         \begin{equation*}
-            A = 
+            A =
             \begin{bmatrix}
-                -\alpha_f-\beta_1 & 2 & \frac{1}{c}\\
-                -4i & \sqrt{5-\alpha_f} & -6\\
-                c & \beta_1 & 9 + i
+                -\alpha_f-\beta_1 & 2                 & \frac{1}{c} \\
+                -4i               & \sqrt{5-\alpha_f} & -6          \\
+                c                 & \beta_1           & 9 + i
             \end{bmatrix}
         \end{equation*}
 
@@ -136,14 +145,14 @@
             \hat{f}\left(\xi\right) = \int_{-\infty}^{\infty}f\left(\xi\right)e^{2\pi ix\xi}\text{d}\xi
             \label{eqt:fourTrans}
         \end{equation}
-        
+
 
     \clearpage
     \section{Figures}
         You can add lovely figures, and then reference them like this "As stated in Figure \ref{fig:test}".
         It's even a hyperlink \textit{*click* *click*}
 
-        \begin{figure}[htbp]
+        \begin{figure}[H]
             \begin{centering}
                 \includegraphics[width=0.5\textwidth]{images/rootLocus.png}
                 \caption{A test figure}
@@ -151,24 +160,24 @@
             \end{centering}
         \end{figure}
 
-    \clearpage
     \section{Tables}
         What are tables like?
         Like this!
-		\begin{table}[H]
-			\centering
-			\caption{Table of specified parameters and achieved values}
-            \vspace{0.2cm}
-			\begin{tabular}{c|c|c|c}
-				 & \bfseries Target & \bfseries Values & \bfseries Results
-				\csvreader[head to column names]{data/TargetsAndVals.csv}{}
-				{\\\hline\csvcoli & \csvcolii & \csvcoliii & \csvcoliv }
-			\end{tabular}
-			\label{Table:Parameters}
-		\end{table}
+        \begin{table}[H]
+            \centering
+            \caption{Table of specified parameters and achieved values}
+            \vspace{0.1cm}
+                \csvreader[
+                head to column names,
+                tabular = cccc,
+                table head = \toprule \bfseries Parameter & \bfseries Target & \bfseries Calculated & \bfseries Simulated \\\midrule,
+                table foot = \bottomrule,
+                ]{data/TargetsAndVals.csv}{}{\csvcoli & \csvcolii & \csvcoliii & \csvcoliv}
+            \label{Table:Parameters}
+        \end{table}
 
     \section{Additional Helpful Packages}
-    \begin{itemize}
+        \begin{itemize}
         \item siunitx
             I strongly recommend using the siunitx package for formatting all units.
             \\\si{\hertz}
@@ -178,59 +187,69 @@
         \item xcolor
             for {\color{red}colourful} {\color{blue}text}!
 
-        \item listings
+        \item minted
+            \begin{listing}[H]
+                \begin{minted}{python}
+                    def string2bits(s=''):
+                        return [bin(ord(x))[2:].zfill(8) for x in s]
 
-            \begin{lstlisting}[language=python]
-                def string2bits(s=''):
-                    return [bin(ord(x))[2:].zfill(8) for x in s]
+                    def bits2string(b=None):
+                        return ''.join([chr(int(x, 2)) for x in b])
 
-                def bits2string(b=None):
-                    return ''.join([chr(int(x, 2)) for x in b])
+                    s = 'Hello, World!'
+                    b = string2bits(s)
+                    s2 = bits2string(b)
 
-                s = 'Hello, World!'
-                b = string2bits(s)
-                s2 = bits2string(b)
+                    print 'String:'
+                    print s
 
-                print 'String:'
-                print s
+                    print '\nList of Bits:'
+                    for x in b:
+                        print x
 
-                print '\nList of Bits:'
-                for x in b:
-                    print x
-
-                print '\nString:'
-                print s2
-            \end{lstlisting}
+                    print '\nString:'
+                    print s2
+                \end{minted}
+                \caption{An example of a block of python included and highlighted with the package minted}
+                \label{lst:pythonExample}
+            \end{listing}
 
         \item chemformula
-            A chemistry equation!
+            A chemistry (or nuclear) equation!
             \begin{equation}
-               \ch{
-                    ^{2}H + ^{2}H -> ^{3}He + n^{0}
+                \ch{
+                ^{2}H + ^{2}H -> ^{3}He + n^{0}
                 }
                 \label{eqt:nucEnerReleased}
             \end{equation}
-    \end{itemize}
+            \end{itemize}
 
 
     \section{Bibliography}
         \subsection{Writing the .bib File}
-            \begin{lstlisting}[language={[LaTeX]TeX}]
-                @incollection{ref:01,
-                    author = {Berger, M.J. and Hubbell, J.H. and Seltzer, S.M. and Chang, J. and Coursey, J.S. and Sukumar, R. and Zucker, D.S. and Olsen, K.},
-                    title = {XCOM: Photon Cross Sections Database},
-                    publisher = {NIST, PLM, Radiation Physics Division},
-                    year = {2010},
-                    booktitle = {NIST Standard Reference Database 8 (XGAM)},
-                    chapter = {Copper},
-                    url = {https://physics.nist.gov/cgi-bin/Xcom/xcom3_1},
-                }
-            \end{lstlisting}
+
+            \begin{listing}[H]
+                \begin{centering}
+                    \begin{minted}{bibtex}
+                        @incollection{ref:01,
+                        author = {Berger, M.J. and Hubbell, J.H. and Seltzer, S.M. and Chang, J. and Coursey, J.S. and Sukumar, R. and Zucker, D.S. and Olsen, K.},
+                        title = {XCOM: Photon Cross Sections Database},
+                        publisher = {NIST, PLM, Radiation Physics Division},
+                        year = {2010},
+                        booktitle = {NIST Standard Reference Database 8 (XGAM)},
+                        chapter = {Copper},
+                        url = {https://physics.nist.gov/cgi-bin/Xcom/xcom3_1},
+                        }
+                    \end{minted}
+                    \caption{Code for a bibliographic entry}
+                    \label{lst:bibliography}
+                \end{centering}
+            \end{listing}
         \subsection{Using the References}
-            Here I am making a statement that should be backed up with a reference placed here -> \cite{ref:01}
-            Now it will show up in the bibliography and the reference above will link to it and be 
+            Here I am making a statement that should be backed up with a reference placed right at the end. \cite{ref:01}
+            Now it will show up in the bibliography and the reference above will link to it and be
             correctly numbered. For Free!
-        
+
     \clearpage
     \printbibliography[heading=bibintoc]
 \end{document}
