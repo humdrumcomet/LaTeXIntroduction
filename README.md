@@ -14,8 +14,8 @@ If you are compiling this document outside of Overleaf, please note that the min
 
 ## Online LaTeX Resources
 
-* [CTAN - Comprehensive TeX Archive Network](https://www.ctan.org/) - Repository of all TeX distributions, packages, and official documentation.\
-* [TeX Stack Exchange](https://tex.stackexchange.com/) - An active and very helpful site for answering LaTeX questions and troubleshooting errors.\
+* [CTAN - Comprehensive TeX Archive Network](https://www.ctan.org/) - Repository of all TeX distributions, packages, and official documentation.
+* [TeX Stack Exchange](https://tex.stackexchange.com/) - An active and very helpful site for answering LaTeX questions and troubleshooting errors.
 * [Overleaf guides](https://www.overleaf.com/learn) - Comprehensive documentation on LaTeX usage.
 
 ## Authors and Organizers
