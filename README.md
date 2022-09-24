@@ -2,10 +2,10 @@
 
 Welcome to the LaTeX introduction workshop.
 This is the first in a series of workshops aimed at getting people comfortable with the typesetting tool LaTeX, and ensuring that they're able to create great documents effectively and efficiently.
-To grab blank versions of the LaTeX code (with the preamble and example definitions, but without the text) you can go [here](https://github.com/humdrumcomet/LaTeXCodingSession).\
+To grab blank versions of the LaTeX code (with the preamble and example definitions, but without the text) you can go [here](https://github.com/humdrumcomet/LaTeXCodingSession).
 
 To return to the top level directory of the tutorials, click [here](https://github.com/humdrumcomet/LaTeXTutorialSeries).\
-To go to the next workshop in the series, click [here](https://github.com/humdrumcomet/LaTeXAdvancedWorkshop).\
+To go to the next workshop in the series, click [here](https://github.com/humdrumcomet/LaTeXAdvancedWorkshop).
 
 
 ## Overview
