@@ -22,6 +22,7 @@
 \usepackage{minted} % inclusion of code blocks with syntax highlighting and
 \setminted{linenos, autogobble, fontsize=\footnotesize, breaklines=true} % set global options for minted environments
 \usepackage{chemformula} % for writing chemical formulae
+\usepackage[useregional]{datetime2}
 
 \addbibresource[location=local]{references.bib} % adding a bibliography
 
@@ -32,14 +33,15 @@
         \vspace{3cm}
         {\LARGE An Introduction to the\\
             Typesetting Tool\\}
-        \vspace{9cm}
+        \vspace{8cm}
     \end{center}
-    \begin{raggedleft}
-        Authors and Organizer\\
+    \begin{flushright}
+        Authors and Organizers:\\
         Ghassan Arnouk\\
         Alec Bales D'Cruze\\
         Aaron English\\
-    \end{raggedleft}
+        \DTMdisplaydate{2022}{9}{26}\\
+    \end{flushright}
     \thispagestyle{empty}
 
     \clearpage
@@ -175,21 +177,22 @@
 
     \section{Additional Helpful Packages}
         \begin{itemize}
-        \item siunitx
+        \item siunitx\\
             I strongly recommend using the siunitx package for formatting all units.
             \\\si{\hertz}
             \\\SIrange{100}{200}{\nano\meter}
             \\\SI{100}{\kilo\gram}
             \\Convenient!
 
-        \item minted
+        \item minted\\
+            Include blocks of code or source files with syntax highlighting.
             \begin{listing}[H]
                 \inputminted{python}{./demo.py}
                 \caption{An example of a block of python included and highlighted with the package minted}
                 \label{lst:pythonExample}
             \end{listing}
 
-        \item chemformula
+        \item chemformula\\
             A chemical (or nuclear) equation!
             \begin{equation}
                 \ch{
