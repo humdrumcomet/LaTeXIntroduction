@@ -8,28 +8,15 @@ To return to the top level directory of the tutorials, click [here](https://gith
 To go to the next workshop in the series, click [here](https://github.com/humdrumcomet/LaTeXAdvancedWorkshop).
 
 
-## Overview
-This tutorial document is designed to be used in Overleaf, but will work with any current version of TeXlive. 
+## Overview and Usage
+This tutorial document is designed to be used in Overleaf, but will work with any current version of TeXlive (Linux or Mac), MacTeX (Mac), or MikTeX (Windows). 
 If you are compiling this document outside of Overleaf, please note that the minted package has an external dependency of [Pygments](https://pygments.org/), but Pygments is multiplatform and will work with Windows, Mac, or Linux.
 
-## Usage
-To use this repository with Overleaf, follow the instructions below:
+## Online LaTeX Resources
 
-1. Select the `Code` green button and then select `Download ZIP` as shown below.
-
-![attributes](img/downloadZip.png)
-
-2. Navigate to Overleaf and once logged in, select the `New Project` green button at the top left corner of the screen.
-
-![attributes](img/overleafUploadProject.png)
-
-3. Select the `Upload Project` option from the menu.
-
-![attributes](img/selectazip.png)
-
-4. Click the `Select a .zip file` button and upload the downloaded zip file.
-
-5. The LaTeX project is started and you are ready to go!
+* [CTAN - Comprehensive TeX Archive Network](https://www.ctan.org/) - Repository of all TeX distributions, packages, and official documentation.\
+* [TeX Stack Exchange](https://tex.stackexchange.com/) - An active and very helpful site for answering LaTeX questions and troubleshooting errors.\
+* [Overleaf guides](https://www.overleaf.com/learn) - Comprehensive documentation on LaTeX usage.
 
 ## Authors and Organizers
 
