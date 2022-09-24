@@ -5,27 +5,25 @@
 
 \documentclass[hidelinks, 12pt]{article}%
 
-\usepackage{import}
-\usepackage{geometry}
-\usepackage{hyperref}
-\usepackage[tbtags]{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[style=ieee,backend=biber]{biblatex}
-\usepackage{float}
-\usepackage{graphicx}
-\usepackage{booktabs}
-\usepackage{csvsimple}
-\usepackage{siunitx}
+\usepackage{geometry} % useful for defining page geometries
+\usepackage{hyperref} % used for creating hyperlinks in documents. Both to the web and within the document itself
+\usepackage[tbtags]{amsmath} % for typesetting math (American Mathematical Society)
+\usepackage{amsfonts} % fonts and mathematical symbols
+\usepackage{amssymb} % more mathematical symbols
+\usepackage[utf8]{inputenc} % how to treat the written file (as utf8)
+\usepackage[T1]{fontenc} % the encoding for the output file T1 is the most common, includes accents and many other commonly needed/used characters
+\usepackage[style=ieee,backend=biber]{biblatex} % for handling bibliographies
+\usepackage{float} % added control over
+\usepackage{graphicx} % tools for inclusion of graphics
+\usepackage{booktabs} % adding commands to improve the look of tables
+\usepackage{csvsimple} % simplify table creation by importing .csv files directly
+\usepackage{siunitx} % consistent notation and correct formatting of units
 \DeclareSIUnit{\torr}{Torr} % Custom unit definition
-\usepackage{minted}
-\setminted{linenos, autogobble, fontsize=\footnotesize, breaklines=true}
-\usepackage{chemformula}
-\usepackage{xcolor}
+\usepackage{minted} % inclusion of code blocks with syntax highlighting and
+\setminted{linenos, autogobble, fontsize=\footnotesize, breaklines=true} % set global options for minted environments
+\usepackage{chemformula} % for writing chemical formulae
 
-\addbibresource[location=local]{references.bib}
+\addbibresource[location=local]{references.bib} % adding a bibliography
 
 \begin{document}
     \begin{center}
@@ -84,11 +82,9 @@
             \item siunitx - Nice, clean, units
             \item minted - Beautiful blocks of highlighted code thanks to Pygments
             \item chemformula - Convenient chemical equation display
-            \item xcolor - Apply colours to words and stuff
         \end{enumerate}
 
         \begin{listing}[H]
-            \centering
             \begin{minted}{tex}
                 \usepackage{import}
                 \usepackage{geometry}
@@ -106,7 +102,6 @@
                 \usepackage{siunitx}
                 \usepackage{minted}
                 \usepackage{chemformula}
-                \usepackage{xcolor}
             \end{minted}
             \caption{Code to include packages in a \LaTeX document (as used in this document)}
             \label{lst:packages}
@@ -150,7 +145,7 @@
     \clearpage
     \section{Figures}
         You can add lovely figures, and then reference them like this "As stated in Figure \ref{fig:test}".
-        It's even a hyperlink \textit{*click* *click*}
+        It's even a hyperlink! \textit{*click* *click*}
 
         \begin{figure}[H]
             \begin{centering}
@@ -184,38 +179,16 @@
             \\\SIrange{100}{200}{\nano\meter}
             \\\SI{100}{\kilo\gram}
             \\Convenient!
-        \item xcolor
-            for {\color{red}colourful} {\color{blue}text}!
 
         \item minted
             \begin{listing}[H]
-                \begin{minted}{python}
-                    def string2bits(s=''):
-                        return [bin(ord(x))[2:].zfill(8) for x in s]
-
-                    def bits2string(b=None):
-                        return ''.join([chr(int(x, 2)) for x in b])
-
-                    s = 'Hello, World!'
-                    b = string2bits(s)
-                    s2 = bits2string(b)
-
-                    print 'String:'
-                    print s
-
-                    print '\nList of Bits:'
-                    for x in b:
-                        print x
-
-                    print '\nString:'
-                    print s2
-                \end{minted}
+                \inputminted{python}{./demo.py}
                 \caption{An example of a block of python included and highlighted with the package minted}
                 \label{lst:pythonExample}
             \end{listing}
 
         \item chemformula
-            A chemistry (or nuclear) equation!
+            A chemical (or nuclear) equation!
             \begin{equation}
                 \ch{
                 ^{2}H + ^{2}H -> ^{3}He + n^{0}
@@ -227,7 +200,6 @@
 
     \section{Bibliography}
         \subsection{Writing the .bib File}
-
             \begin{listing}[H]
                 \begin{centering}
                     \begin{minted}{bibtex}
@@ -245,6 +217,13 @@
                     \label{lst:bibliography}
                 \end{centering}
             \end{listing}
+            While you may have to write a bib entry manually occasional, almost all journal websites offer .bib citations to copy and paste (or download).
+            There are also a number of tools that simplify .bib generation:
+            \begin{itemize}
+                \item Lookup books by their ISBN and get a bibtex entry \href{https://lead.to/amazon/com/?key=+&si=all&op=bt&bn=&so=sa&ht=us}{lead.to}
+                \item Browser extension to create bibtex entries from the current webpage (available for firefox and chrome)\href{https://github.com/Langenscheiss/bibitnow}{bibitnow}
+                \item many others
+            \end{itemize}
         \subsection{Using the References}
             Here I am making a statement that should be backed up with a reference placed right at the end. \cite{ref:01}
             Now it will show up in the bibliography and the reference above will link to it and be
