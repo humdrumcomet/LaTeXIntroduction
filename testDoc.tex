@@ -49,79 +49,55 @@
     \clearpage
     \section{Motivation}
         \begin{itemize}
-            \item High quality documents
+            \item WYSYWIG (What you see is what you get) vs.\\
+                  WYSIWYW (what you see is what you want)
+                  \begin{itemize}
+                      \item \textit{Theoretically} Word \textit{could} do it but it'll fight you for it!
+                      \item Reduce, Reuse, Recycle - Once you've done it, you can use it again, reuse your code!
+                  \end{itemize}
+            \item Consistent high quality documents
             \item Automation - don't do the computer's job!
             \item Widely available and extraordinarily flexible
             \item Open-Source (and free)
-            \item Enormous and extremely helpful user base
+            \item Enormous and extremely helpful user base - debugging less of an exercise in pulling teeth
                 \begin{itemize}
                     \item \href{https://www.ctan.org/}{CTAN - Comprehensive TeX Archive Network}
                     \item \href{https://tex.stackexchange.com/}{TeX Stack Exchange}
                     \item \href{https://www.overleaf.com/learn}{Overleaf guides}
                 \end{itemize}
-            \item Nearly unlimited skillcap - actual benefits to improving
         \end{itemize}
 
-
-    \section{Packages}
-        There are a few base packages that you should (almost) always import:
-        \begin{enumerate}
-            \item import
-            \item geometry
-            \item hyperref
-            \item amsmath
-            \item amsfonts
-            \item amssymb
-            \item inputenc
-            \item fontenc
-            \item biblatex
-            \item float
-            \item graphicx
-        \end{enumerate}
-        ...And a few that you'll typically include (and are used to prepare this document).
-        \begin{enumerate}
-            \item booktabs - Pretty professional tables
-            \item csvsimple - Simplify table generation
-            \item siunitx - Nice, clean, units
-            \item minted - Beautiful blocks of highlighted code thanks to Pygments
-            \item chemformula - Convenient chemical equation display
-        \end{enumerate}
-
-        \begin{listing}[H]
-            \begin{minted}{tex}
-                \usepackage{import}
-                \usepackage{geometry}
-                \usepackage{hyperref}
-                \usepackage[tbtags]{amsmath}
-                \usepackage{amsfonts}
-                \usepackage{amssymb}
-                \usepackage[utf8]{inputenc}
-                \usepackage[T1]{fontenc}
-                \usepackage[style=ieee,backend=biber]{biblatex}
-                \usepackage{float}
-                \usepackage{graphicx}
-                \usepackage{booktabs}
-                \usepackage{csvsimple}
-                \usepackage{siunitx}
-                \usepackage{minted}
-                \usepackage{chemformula}
-            \end{minted}
-            \caption{Code to include packages in a \LaTeX document (as used in this document)}
-            \label{lst:packages}
-        \end{listing}
+    \section{The Basics}
+        \begin{itemize}
+            \item environments
+                \begin{minted}[linenos=false]{tex}
+                    \begin{<environment>}
+                        <your code>
+                    \end{<environment>}
+                \end{minted}
+            \item commands
+                \begin{minted}[linenos=false]{tex}
+                    \command[<some options>]{<arguments>}
+                \end{minted}
+        \end{itemize}
 
     \section{Sections...}
         \subsection{...and subsections...}
             \subsubsection{...and subsubsections...}
 
     \section{Equations}
-        How about some equations?
+        How about some equations? An inline equation, showing the Pythagorean theorem \(a^{2} = b^{2} + c^{2}\).
+        Or a bigger example, one that I'd like to reference and discuss more, the Fourier Transform as given in Equation \ref{eqt:fourTrans}.
+        \begin{equation}
+            \hat{f}\left(\xi\right) = \int_{-\infty}^{\infty}f\left(\xi\right)e^{2\pi ix\xi}\text{d}\xi
+            \label{eqt:fourTrans}
+        \end{equation}
+        What if instead I wanted to show substitution and developing equations? (notice the size of the brackets...)
         \begin{align}
-            \delta & = - \frac{B^{2}}{180,000} + \frac{B}{173} + 0.5\nonumber      \\
-                   & = - \frac{533^{2}}{180,000} + \frac{533}{173} + 0.5 \nonumber \\
+            \delta & = B\left(\frac{1}{173} - \frac{B}{180,000}\right) + 0.5\nonumber      \\
+                   & = 533\left(\frac{1}{173} - \frac{533}{180,000}\right) + 0.5 \nonumber \\
                    & = 2.0 \nonumber
         \end{align}
-
         Or even a matrix
         \begin{equation*}
             A =
@@ -131,25 +107,18 @@
                 c                 & \beta_1           & 9 + i
             \end{bmatrix}
         \end{equation*}
-
-        Calculus!
+        A set of differential equations!
         \begin{align}
             \frac{\text{d}x}{\text{d}t} &= \sigma (y-x)\\
             \frac{\text{d}y}{\text{d}t} &= x(\rho -z)-y\\
             \frac{\text{d}z}{\text{d}t} &= xy-\beta z
         \end{align}
-        An example with an integral, the Fourier Transform
-        \begin{equation}
-            \hat{f}\left(\xi\right) = \int_{-\infty}^{\infty}f\left(\xi\right)e^{2\pi ix\xi}\text{d}\xi
-            \label{eqt:fourTrans}
-        \end{equation}
 
 
     \clearpage
     \section{Figures}
         You can add lovely figures, and then reference them like this "As stated in Figure \ref{fig:test}".
         It's even a hyperlink! \textit{*click* *click*}
-
         \begin{figure}[H]
             \begin{centering}
                 \includegraphics[width=0.5\textwidth]{images/rootLocus.png}
@@ -176,23 +145,14 @@
         Can also make use of online table generation tools like \href{https://www.tablesgenerator.com/}{Tables Generator}.
 
     \section{Additional Helpful Packages}
-        \begin{itemize}
-        \item siunitx\\
+        \subsection{siunitx}
             I strongly recommend using the siunitx package for formatting all units.
             \\\si{\hertz}
             \\\SIrange{100}{200}{\nano\meter}
             \\\SI{100}{\kilo\gram}
             \\Convenient!
 
-        \item minted\\
-            Include blocks of code or source files with syntax highlighting.
-            \begin{listing}[H]
-                \inputminted{python}{./demo.py}
-                \caption{An example of a block of python included and highlighted with the package minted}
-                \label{lst:pythonExample}
-            \end{listing}
-
-        \item chemformula\\
+        \subsection{chemformula}
             A chemical (or nuclear) equation!
             \begin{equation}
                 \ch{
@@ -200,10 +160,20 @@
                 }
                 \label{eqt:nucEnerReleased}
             \end{equation}
-            \end{itemize}
 
+        \subsection{minted}
+            Include blocks of code or source files with syntax highlighting.
+            \begin{listing}[H]
+                \inputminted{python}{./demo.py}
+                \caption{An example of a block of python included and highlighted with the package minted}
+                \label{lst:pythonExample}
+            \end{listing}
 
-    \section{Bibliography}
+    \section{Bibliographies}
+        \subsection{Citations}
+            Here I am making a statement that should be backed up with a reference placed right at the end. \cite{ref:01}
+            Now it will show up in the bibliography and the reference above will link to it and be correctly numbered.
+            Style can be changed at any time up above in the biblatex command.
         \subsection{Writing the .bib File}
             \begin{listing}[H]
                 \begin{centering}
@@ -229,11 +199,69 @@
                 \item Browser extension to create bibtex entries from the current webpage (available for firefox and chrome)\href{https://github.com/Langenscheiss/bibitnow}{bibitnow}
                 \item many others
             \end{itemize}
-        \subsection{Using the References}
-            Here I am making a statement that should be backed up with a reference placed right at the end. \cite{ref:01}
-            Now it will show up in the bibliography and the reference above will link to it and be
-            correctly numbered. For Free!
 
+
+    \section{Starting Your Document}
+        To start your document, you need to first declare your document class, then list any packages you'd like to include.
+        Here are a few base packages that you should (almost) always import:
+        \begin{enumerate}
+            \item geometry
+            \item hyperref
+            \item amsmath
+            \item amsfonts
+            \item amssymb
+            \item inputenc
+            \item fontenc
+            \item biblatex
+            \item float
+            \item graphicx
+            \item booktabs
+            \item csvsimple
+            \item siunitx
+            \item minted
+            \item chemformula
+        \end{enumerate}
+        Next, start the document environments, and you're off!
+        All together, your base document will look like the code in Listing \ref{lst:baseDoc} shown below.
+        \begin{listing}[H]
+            \begin{centering}
+                \begin{minted}{tex}
+                    \documentclass[hidelinks, 12pt]{article}
+
+                    \usepackage{import}
+                    \usepackage{geometry}
+                    \usepackage{hyperref}
+                    \usepackage[tbtags]{amsmath}
+                    \usepackage{amsfonts}
+                    \usepackage{amssymb}
+                    \usepackage[utf8]{inputenc}
+                    \usepackage[T1]{fontenc}
+                    \usepackage[style=ieee,backend=biber]{biblatex}
+                    \usepackage{float}
+                    \usepackage{graphicx}
+                    \usepackage{booktabs}
+                    \usepackage{csvsimple}
+                    \usepackage{siunitx}
+                    \usepackage{minted}
+                    \usepackage{chemformula}
+
+                    \begin{document}
+                        <your document code>
+                    \end{document}
+                \end{minted}
+            \end{centering}
+            \caption{Base code for a \LaTeX document}
+            \label{lst:baseDoc}
+        \end{listing}
+
+    \section{What's Next?}
+        \begin{itemize}
+            \item simplify code reuse? import!
+            \item custom graphics and more? PGF/TikZ!
+            \item fancy glossaries and acronyms? glossaries!
+            \item presentations? beamer!
+            \item and still more at the coming workshops!
+        \end{itemize}
     \clearpage
     \printbibliography[heading=bibintoc]
 \end{document}
