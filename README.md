@@ -8,7 +8,7 @@ To grab blank versions of the LaTeX code (with the preamble and example definiti
 
 0. [LaTeX Workshops and Tutorial Series](https://github.com/humdrumcomet/LaTeXTutorialSeries)  
    Top level page for the workshop series
-1. [What is LaTeX?](https://github.com/humdrumcomet/LaTeXIntroduction)<sup>(you are here)</sup>  
+1. [What is LaTeX?](https://github.com/humdrumcomet/LaTeXIntroduction) <sup>(you are here)</sup>  
     An introduction to the typesetting tool
     - [Let's Code It!](https://github.com/humdrumcomet/LaTeXCodingSession)  
       A starting point for you to prepare your first document during the live coding session
