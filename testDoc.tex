@@ -135,7 +135,7 @@ table-auto-round,
         It's even a hyperlink! \textit{*click* *click*}
         \begin{figure}[H]
             \begin{centering}
-                \includegraphics[width=0.5\textwidth]{images/rootLocus.png}
+                \includegraphics[width=0.5\textwidth]{images/rootLocus.pang}
                 \caption{A test figure}
                 \label{fig:test}
             \end{centering}
@@ -144,20 +144,20 @@ table-auto-round,
     \section{Tables}
         What are tables like?
         Like this!
-        \begin{table}[H]
-            \centering
-            \label{Table:Parameters}
-            \caption{Table of specified parameters and achieved values}
+        % \begin{table}[H]
+        %     \centering
+        %     \label{Table:Parameters}
+        %     \caption{Table of specified parameters and achieved values}
             \csvreader[
                 head to column names,
                 centered tabularray = {
                     width=0.9\textwidth,
                     colspec={
-                        Q[l, co=1]
-                        Q[co=1,si={table-format=1.1},r]
-                        Q[co=1,si={table-format=1.1},r]
-                        Q[co=1,si={table-format=1.1},r]
-                        Q[co=1,si={table-format=1.1},r]
+                        Q[co=1,l]
+                        Q[co=1,c]
+                        Q[co=1,c]
+                        Q[co=1,c]
+                        Q[co=1,c]
                     },
                     row{1} = {guard}
                 },
@@ -165,7 +165,7 @@ table-auto-round,
                 table foot = \bottomrule,
             ]{data/TargetsAndVals.csv}{}{
                 \csvexpval\parameter & \tablenum[table-format=1.2e1]{\target} & \tablenum[table-format=1.2e1]{\theoVal} & \tablenum[table-format=1.2e1]{\simMixVal}}
-        \end{table}
+        % \end{table}
         Can also make use of online table generation tools like \href{https://www.tablesgenerator.com/}{Tables Generator}.
 
     \section{Additional Helpful Packages}
