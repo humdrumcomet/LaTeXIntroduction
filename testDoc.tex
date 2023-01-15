@@ -14,11 +14,24 @@
 \usepackage[utf8]{inputenc} % how to treat the written file (as utf8)
 \usepackage[T1]{fontenc} % the encoding for the output file T1 is the most common, includes accents and many other commonly needed/used characters
 \usepackage[style=ieee,backend=biber]{biblatex} % for handling bibliographies
-\usepackage{float} % added control over
+\usepackage{float} % added control over floats
 \usepackage{graphicx} % tools for inclusion of graphics
-\usepackage{booktabs} % adding commands to improve the look of tables
-\usepackage{csvsimple} % simplify table creation by importing .csv files directly
+\usepackage{csvsimple-l3} % simplify table creation by importing .csv files directly (the l3 version is the current most up-to-date version of the package)
 \usepackage{siunitx} % consistent notation and correct formatting of units
+\usepackage{booktabs} % generate publication ready tables
+\usepackage{tabularray} % The current best and most modern tables package available
+\UseTblrLibrary{booktabs, siunitx, amsmath, diagbox} % Incorporating in other desirable features for ease of table formatting
+% Configuring the siunitx package
+\sisetup{
+detect-family = true,
+detect-weight = true,
+per-mode = reciprocal,
+input-digits = { 0123456789\pi\dots },
+input-comparators = { <=>\approx\ge\geq\gg\le\leq\ll\sim\gtrsim\lesssim },
+table-figures-integer = 3,
+table-figures-decimal = 2,
+table-auto-round,
+}%
 \DeclareSIUnit{\torr}{Torr} % Custom unit definition
 \usepackage{minted} % inclusion of code blocks with syntax highlighting and
 \setminted{linenos, autogobble, fontsize=\footnotesize, breaklines=true} % set global options for minted environments
@@ -133,15 +146,25 @@
         Like this!
         \begin{table}[H]
             \centering
+            \label{Table:Parameters}
             \caption{Table of specified parameters and achieved values}
-            \vspace{0.1cm}
-                \csvreader[
+            \csvreader[
                 head to column names,
-                tabular = cccc,
+                centered tabularray = {
+                    width=0.9\textwidth,
+                    colspec={
+                        Q[l, co=1]
+                        Q[co=1,si={table-format=1.1},r]
+                        Q[co=1,si={table-format=1.1},r]
+                        Q[co=1,si={table-format=1.1},r]
+                        Q[co=1,si={table-format=1.1},r]
+                    },
+                    row{1} = {guard},
+                },
                 table head = \toprule \bfseries Parameter & \bfseries Target & \bfseries Calculated & \bfseries Simulated \\\midrule,
                 table foot = \bottomrule,
-                ]{data/TargetsAndVals.csv}{}{\csvcoli & \csvcolii & \csvcoliii & \csvcoliv}
-            \label{Table:Parameters}
+            ]{data/TargetsAndVals.csv}{}{
+                \csvexpval\csvcoli & \csvexpval\csvcolii & \csvexpval\csvcoliii & \csvexpval\csvcoliv}
         \end{table}
         Can also make use of online table generation tools like \href{https://www.tablesgenerator.com/}{Tables Generator}.
 
