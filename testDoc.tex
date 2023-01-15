@@ -164,7 +164,7 @@ table-auto-round,
                 table head = \toprule \bfseries Parameter & \bfseries Target & \bfseries Calculated & \bfseries Simulated \\\midrule,
                 table foot = \bottomrule,
             ]{data/TargetsAndVals.csv}{}{
-                \parameter & \tablenum[table-format=<-3.2e1]{\target} & \tablenum[table-format=<-3.2e1]{\theoVal} & \tablenum[table-format=-3.2e1]{\simMixVal}}
+                \csvexpval\parameter & \tablenum[table-format=<-3.2e1]{\target} & \tablenum[table-format=<-3.2e1]{\theoVal} & \tablenum[table-format=-3.2e1]{\simMixVal}}
         \end{table}
         Can also make use of online table generation tools like \href{https://www.tablesgenerator.com/}{Tables Generator}.
 
