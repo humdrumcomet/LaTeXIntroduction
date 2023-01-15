@@ -135,7 +135,7 @@ table-auto-round,
         It's even a hyperlink! \textit{*click* *click*}
         \begin{figure}[H]
             \begin{centering}
-                \includegraphics[width=0.5\textwidth]{images/rootLocus.pang}
+                \includegraphics[width=0.5\textwidth]{images/rootLocus.png}
                 \caption{A test figure}
                 \label{fig:test}
             \end{centering}
@@ -144,10 +144,10 @@ table-auto-round,
     \section{Tables}
         What are tables like?
         Like this!
-        % \begin{table}[H]
-        %     \centering
-        %     \label{Table:Parameters}
-        %     \caption{Table of specified parameters and achieved values}
+        \begin{table}[H]
+            \centering
+            \label{Table:Parameters}
+            \caption{Table of specified parameters and achieved values}
             \csvreader[
                 head to column names,
                 centered tabularray = {
@@ -164,8 +164,8 @@ table-auto-round,
                 table head = \toprule \bfseries Parameter & \bfseries Target & \bfseries Calculated & \bfseries Simulated \\\midrule,
                 table foot = \bottomrule,
             ]{data/TargetsAndVals.csv}{}{
-                \csvexpval\parameter & \tablenum[table-format=1.2e1]{\target} & \tablenum[table-format=1.2e1]{\theoVal} & \tablenum[table-format=1.2e1]{\simMixVal}}
-        % \end{table}
+                \parameter & \tablenum[table-format=<-3.2e1]{\target} & \tablenum[table-format=<-3.2e1]{\theoVal} & \tablenum[table-format=-3.2e1]{\simMixVal}}
+        \end{table}
         Can also make use of online table generation tools like \href{https://www.tablesgenerator.com/}{Tables Generator}.
 
     \section{Additional Helpful Packages}
