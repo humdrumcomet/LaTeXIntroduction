@@ -7,5 +7,5 @@
           I_{buf}/\unit{\milli\ampere},          ,             ,
           I_{ref}/\unit{\milli\ampere},          ,           1,       1
               R_D/\unit{\ohm},  \leq 10,         570,     600
-           V_{lo}/unit{\volt},   \leq 1,              ,
-           V_{rf}/unit{\volt},   \leq 1,              ,
+           V_{lo}/\unit{\volt},   \leq 1,              ,
+           V_{rf}/\unit{\volt},   \leq 1,              ,
