@@ -32,7 +32,7 @@ table-figures-integer = 3,
 table-figures-decimal = 2,
 table-auto-round,
 }%
-\DeclareSIUnit{\torr}{Torr} % Custom unit definition
+\DeclareSIUnit\torr{Torr} % Custom unit definition
 \usepackage{minted} % inclusion of code blocks with syntax highlighting and
 \setminted{linenos, autogobble, fontsize=\footnotesize, breaklines=true} % set global options for minted environments
 \usepackage{chemformula} % for writing chemical formulae
@@ -164,7 +164,7 @@ table-auto-round,
                 table head = \toprule \bfseries Parameter & \bfseries Target & \bfseries Calculated & \bfseries Simulated \\\midrule,
                 table foot = \bottomrule,
             ]{data/TargetsAndVals.csv}{}{
-                \csvexpval\parameter & \tablenum[table-format=<-3.2e1]{\target} & \tablenum[table-format=<-3.2e1]{\theoVal} & \tablenum[table-format=-3.2e1]{\simMixVal}}
+                \parameter & \tablenum[table-format=<-3.2e1]{\target} & \tablenum[table-format=<-3.2e1]{\theoVal} & \tablenum[table-format=-3.2e1]{\simMixVal}}
         \end{table}
         Can also make use of online table generation tools like \href{https://www.tablesgenerator.com/}{Tables Generator}.
 
