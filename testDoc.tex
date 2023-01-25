@@ -4,7 +4,7 @@
 % arara: pdflatex: { shell: yes }
 
 % Demo report and presentation prepared by Aaron English (humdrumcomet on github)
-\documentclass[hidelinks, 12pt]{article}%
+\documentclass[titlepage, hidelinks, 12pt]{article}%
 
 \usepackage{geometry} % useful for defining page geometries
 \usepackage{hyperref} % used for creating hyperlinks in documents. Both to the web and within the document itself
@@ -16,11 +16,10 @@
 \usepackage[style=ieee,backend=biber]{biblatex} % for handling bibliographies
 \usepackage{float} % added control over floats
 \usepackage{graphicx} % tools for inclusion of graphics
-\usepackage{csvsimple-l3} % simplify table creation by importing .csv files directly (the l3 version is the current most up-to-date version of the package)
-\usepackage{tabularray} % The current best and most modern tables package available
+\usepackage{csvsimple} % simplify table creation by importing .csv files directly (the l3 version is the current most up-to-date version of the package)
 \usepackage{booktabs} % generate publication ready tables
 \usepackage{siunitx} % consistent notation and correct formatting of units
-\UseTblrLibrary{booktabs, siunitx, amsmath, diagbox} % Incorporating in other desirable features for ease of table formatting
+
 % Configuring the siunitx package
 \sisetup{
 detect-family = true,
@@ -44,24 +43,29 @@ table-auto-round,
 \addbibresource[location=local]{references.bib} % adding a bibliography
 
 \begin{document}
+    \begin{titlepage}
     \begin{center}
         \vspace*{1cm}
-        {\fontsize{300}{50}\selectfont {\bfseries Hello \LaTeX\\}}
-        \vspace{3cm}
-        {\LARGE An Introduction to the\\
-            Typesetting Tool\\}
-        \vspace{8cm}
+        \Huge
+        \textbf{Hello \LaTeX}
+        
+        \vspace{0.5cm}
+        \LARGE
+        An Introduction to the\\
+        Typesetting Tool
+        \vfill
     \end{center}
     \begin{flushright}
         Authors and Organizers:\\
         Ghassan Arnouk\\
         Alec Bales D'Cruze\\
         Aaron English\\
-        \DTMdisplaydate{2022}{9}{26}\\
+        \DTMdisplaydate{2023}{01}{25}\\
     \end{flushright}
-    \thispagestyle{empty}
+   % \thispagestyle{empty}
 
-    \clearpage
+   % \clearpage
+   \end{titlepage}
     \tableofcontents
     \clearpage
     
@@ -242,7 +246,6 @@ table-auto-round,
                         \item siunitx
                         \item minted
                         \item chemformula
-                        \item tabularray
                     \end{enumerate}
                 \end{minipage}
                 \begin{minipage}{0.6\linewidth}%
@@ -263,8 +266,6 @@ table-auto-round,
                         \usepackage{siunitx}
                         \usepackage{minted}
                         \usepackage{chemformula}
-                        \usepackage{tabularray}
-                        \UseTblrLibrary{booktabs, siunitx, amsmath, diagbox}
                     \end{minted}
                 \end{minipage}
 
