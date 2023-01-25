@@ -124,7 +124,7 @@ table-auto-round,
                 \csvreader[
                 head to column names,
                 tabular = {lS[table-format=>-2]S[table-format=>-3.2]S[table-format=>-3.2]},
-                table head = \toprule \bfseries Parameter & \bfseries Target & \bfseries Calculated & \bfseries Simulated \\\midrule,
+                table head = \toprule {\bfseries Parameter} & {\bfseries Target} & {\bfseries Calculated} & {\bfseries Simulated} \\\midrule,
                 table foot = \bottomrule,
                 ]{data/TargetsAndVals.csv}{}{\csvcoli & \csvcolii & \csvcoliii & \csvcoliv}
             \end{table}
