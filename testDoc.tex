@@ -27,15 +27,13 @@ detect-weight = true,
 per-mode = reciprocal,
 input-digits = { 0123456789\pi\dots },
 input-comparators = { <=>\approx\ge\geq\gg\le\leq\ll\sim\gtrsim\lesssim },
-table-figures-integer = 3,
-table-figures-decimal = 2,
 table-auto-round,
 }%
 \DeclareSIUnit\torr{Torr} % Custom unit definition
 \usepackage{xcolor} % to access the named colour LightGray
 \definecolor{LightGray}{gray}{0.9}
 \usepackage{minted} % inclusion of code blocks with syntax highlighting and
-\setminted{linenos=flase, autogobble, fontsize=\small, breaklines=true, bgcolor=LightGray} % set global options for minted environments
+\setminted{linenos=false, autogobble, fontsize=\small, breaklines=true, bgcolor=LightGray} % set global options for minted environments
 \setmintedinline{bgcolor={}}
 \usepackage{chemformula} % for writing chemical formulae
 \usepackage[useregional]{datetime2}
@@ -66,10 +64,29 @@ table-auto-round,
 
     \tableofcontents
     \clearpage
+    \listoffigures
+    \clearpage
     
     \section{Sections...}
         \subsection{...and subsections...}
             \subsubsection{...and subsubsections...}
+
+
+    \section{Lists}
+        \subsection{Ordered}
+            \begin{enumerate}
+                \item shutdown the computer
+                \item unplug the computer
+                \item remove the screws from the back of the case
+                \item remove the side panel
+            \end{enumerate}
+        \subsection{Unordered}
+            \begin{itemize}
+                \item Apples
+                \item Oranges
+                \item Strawberries
+                \item Blueberries
+            \end{itemize}
 
     \section{Equations}
         How about some equations? An inline equation, showing the Pythagorean theorem \(a^{2} = b^{2} + c^{2}\).
@@ -118,7 +135,7 @@ table-auto-round,
         Like this!
         \begin{table}[H]
             \centering
-            \label{tab:Parameters}
+            \label{tab:parameters}
             \caption{Table of specified parameters and achieved values}
                 \vspace{0.1cm}
                 \csvreader[
@@ -129,15 +146,12 @@ table-auto-round,
                 ]{data/TargetsAndVals.csv}{}{\csvcoli & \csvcolii & \csvcoliii & \csvcoliv}
             \end{table}
 
-        Add other tables that show just SIunitx
-        show multicell
-
         Can also make use of online table generation tools like \href{https://www.tablesgenerator.com/}{Tables Generator}.
 
     \section{In-document References}
         References to items in your document is handled using two parts.
         A label inserted with the \mintinline{tex}{\label{<your label>}} command, and the \mintinline{tex}{\ref{<your label>}} command.
-        With it, you can refer to equations like the Fourier transform from earlier (Equation \ref{eqt:fourTrans}), or a figure (Figure \ref{fig:test}), table (Table \ref{Table:Parameters}), or any of the many things with automatic counters.
+        With it, you can refer to equations like the Fourier transform from earlier (Equation \ref{eqt:fourTrans}), or a figure (Figure \ref{fig:test}), table (Table \ref{tab:parameters}), or any of the many things with automatic counters.
     \section{Bibliographies}
         \subsection{Citations}
             Citations are inserted using the \mintinline{tex}{\cite{<your reference>}}. Here I am making a statement that should be backed up with a reference placed right at the end. \cite{ref:01}
@@ -183,27 +197,26 @@ table-auto-round,
         \end{itemize}
 
         \subsection{Recommended Packages}
-        \subsubsection{siunitx}
-            I strongly recommend using the siunitx package for formatting all units.
-            \\\si{\hertz}
-            \\\SIrange{100}{200}{\nano\meter}
-            \\\SI{100}{\kilo\gram}
-            \\Convenient!
+            \subsubsection{siunitx}
+                I strongly recommend using the siunitx package for formatting all units.
+                \\\si{\hertz}
+                \\\SIrange{100}{200}{\nano\meter}
+                \\\SI{100}{\kilo\gram}
+                \\Convenient!
 
-        \subsubsection{tabularray}
-            The most complete and modern table formatting package.
+            \subsubsection{csvsimple}
+                Ease preparation of tables by importing csv files directly
 
-        \subsubsection{csvsimple}
-            Ease preparation of tables by importing csv files directly
+            \subsubsection{chemformula}
+                A chemical (or nuclear) equation!
+                \begin{equation}
+                    \ch{
+                    ^{2}H + ^{2}H -> ^{3}He + n^{0}
+                    }
+                    \label{eqt:nucEnerReleased}
+                \end{equation}
 
-        \subsubsection{chemformula}
-            A chemical (or nuclear) equation!
-            \begin{equation}
-                \ch{
-                ^{2}H + ^{2}H -> ^{3}He + n^{0}
-                }
-                \label{eqt:nucEnerReleased}
-            \end{equation}
+            \subsubsection{Much More to Discuss Next Time!}
 
         \subsubsection{minted}
             Include blocks of code or source files with syntax highlighting.
