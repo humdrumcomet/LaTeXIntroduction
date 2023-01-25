@@ -229,32 +229,28 @@ table-auto-round,
 
     \section{As For Modularity and Reusability...}
         \subsection{Preamble Starting Point}
-            To start your document, you need to first declare your document class, then list any packages you'd like to include.
-            Here are a few base packages that you should (almost) always import:
-            \begin{enumerate}
-                \item geometry
-                \item hyperref
-                \item amsmath
-                \item amsfonts
-                \item amssymb
-                \item inputenc
-                \item fontenc
-                \item biblatex
-                \item float
-                \item graphicx
-                \item booktabs
-                \item csvsimple
-                \item siunitx
-                \item minted
-                \item chemformula
-            \end{enumerate}
-            Next, start the document environments, and you're off!
-            All together, your base document will look like the code in Listing \ref{lst:baseDoc} shown below.
-            \begin{listing}[H]
-                \begin{centering}
+            \begin{columns}[onlytextwidth]%
+                \begin{column}{0.4\textwidth}%
+                    \begin{enumerate}
+                        \item geometry
+                        \item hyperref
+                        \item amsmath
+                        \item amsfonts
+                        \item amssymb
+                        \item inputenc
+                        \item fontenc
+                        \item biblatex
+                        \item float
+                        \item graphicx
+                        \item booktabs
+                        \item csvsimple
+                        \item siunitx
+                        \item minted
+                        \item chemformula
+                    \end{enumerate}
+                \end{column}
+                \begin{column}{0.6\textwidth}%
                     \begin{minted}{tex}
-                        \documentclass[hidelinks, 12pt]{article}
-
                         \usepackage{import}
                         \usepackage{geometry}
                         \usepackage{hyperref}
@@ -271,15 +267,9 @@ table-auto-round,
                         \usepackage{siunitx}
                         \usepackage{minted}
                         \usepackage{chemformula}
-
-                        \begin{document}
-                            <your document code>
-                        \end{document}
                     \end{minted}
-                \end{centering}
-                \caption{Base code for a \LaTeX document}
-                \label{lst:baseDoc}
-            \end{listing}
+                \end{column}
+            \end{columns}
 
     \section{What's Next?}
         \begin{itemize}
