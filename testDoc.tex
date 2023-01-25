@@ -229,8 +229,8 @@ table-auto-round,
 
     \section{As For Modularity and Reusability...}
         \subsection{Preamble Starting Point}
-            \begin{columns}[onlytextwidth]%
-                \begin{column}{0.4\textwidth}%
+            \begin{minipage}{\textwidth}
+                \begin{minipage}{0.4\textwidth}%
                     \begin{enumerate}
                         \item geometry
                         \item hyperref
@@ -248,8 +248,8 @@ table-auto-round,
                         \item minted
                         \item chemformula
                     \end{enumerate}
-                \end{column}
-                \begin{column}{0.6\textwidth}%
+                \end{minipage}
+                \begin{minipage}{0.6\textwidth}%
                     \begin{minted}{tex}
                         \usepackage{import}
                         \usepackage{geometry}
@@ -268,8 +268,8 @@ table-auto-round,
                         \usepackage{minted}
                         \usepackage{chemformula}
                     \end{minted}
-                \end{column}
-            \end{columns}
+                \end{minipage}
+            \end{minipage}
 
     \section{What's Next?}
         \begin{itemize}
