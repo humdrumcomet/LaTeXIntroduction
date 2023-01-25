@@ -44,28 +44,26 @@ table-auto-round,
 
 \begin{document}
     \begin{titlepage}
-    \begin{center}
-        \vspace*{1cm}
-        \Huge
-        \textbf{Hello \LaTeX}
-        
-        \vspace{0.5cm}
-        \LARGE
-        An Introduction to the\\
-        Typesetting Tool
-        \vfill
-    \end{center}
-    \begin{flushright}
-        Authors and Organizers:\\
-        Ghassan Arnouk\\
-        Alec Bales D'Cruze\\
-        Aaron English\\
-        \DTMdisplaydate{2023}{01}{25}\\
-    \end{flushright}
-   % \thispagestyle{empty}
+        \begin{center}
+            \vspace*{1cm}
+            \Huge
+            \textbf{Hello \LaTeX}
 
-   % \clearpage
-   \end{titlepage}
+            \vspace{0.5cm}
+            \LARGE
+            An Introduction to the\\
+            Typesetting Tool
+            \vfill
+        \end{center}
+        \begin{flushright}
+            Authors and Organizers:\\
+            Ghassan Arnouk\\
+            Alec Bales D'Cruze\\
+            Aaron English\\
+            \DTMdisplaydate{2023}{01}{25}\\
+        \end{flushright}
+    \end{titlepage}
+
     \tableofcontents
     \clearpage
     
@@ -120,26 +118,16 @@ table-auto-round,
         Like this!
         \begin{table}[H]
             \centering
-            \label{Table:Parameters}
+            \label{tab:Parameters}
             \caption{Table of specified parameters and achieved values}
-            \csvreader[
+                \vspace{0.1cm}
+                \csvreader[
                 head to column names,
-                centered tabularray = {
-                    width=0.9\textwidth,
-                    colspec={
-                        Q[co=1,l]
-                        Q[co=1,c]
-                        Q[co=1,c]
-                        Q[co=1,c]
-                        Q[co=1,c]
-                    },
-                    row{1} = {guard}
-                },
+                tabular = {lS[table-format=>-2]S[table-format=>-3.2]S[table-format=>-3.2]},
                 table head = \toprule \bfseries Parameter & \bfseries Target & \bfseries Calculated & \bfseries Simulated \\\midrule,
                 table foot = \bottomrule,
-            ]{data/TargetsAndVals.csv}{}{
-                \parameter & \tablenum[table-format=<-3.2e1]{\target} & \tablenum[table-format=<-3.2e1]{\theoVal} & \tablenum[table-format=-3.2e1]{\simMixVal}}
-        \end{table}
+                ]{data/TargetsAndVals.csv}{}{\csvcoli & \csvcolii & \csvcoliii & \csvcoliv}
+            \end{table}
 
         Add other tables that show just SIunitx
         show multicell
@@ -262,7 +250,7 @@ table-auto-round,
                         \usepackage{float}
                         \usepackage{graphicx}
                         \usepackage{booktabs}
-                        \usepackage{csvsimple-l3}
+                        \usepackage{csvsimple}
                         \usepackage{siunitx}
                         \usepackage{minted}
                         \usepackage{chemformula}
