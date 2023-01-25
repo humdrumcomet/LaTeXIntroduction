@@ -61,26 +61,6 @@ table-auto-round,
     \clearpage
     \tableofcontents
     \clearpage
-    \section{Motivation}
-        \begin{itemize}
-            \item WYSYWIG (What you see is what you get) vs.\\
-                  WYSIWYW (what you see is what you want)
-                  \begin{itemize}
-                      \item \textit{Theoretically} Word \textit{could} do it but it'll fight you for it!
-                      \item Reduce, Reuse, Recycle - Once you've done it, you can use it again, reuse your code!
-                  \end{itemize}
-            \item Consistent high quality documents
-            \item Automation - don't do the computer's job!
-            \item Widely available and extraordinarily flexible
-            \item Open-Source (and free)
-            \item Enormous and extremely helpful user base - debugging less of an exercise in pulling teeth
-                \begin{itemize}
-                    \item \href{https://www.ctan.org/}{CTAN - Comprehensive TeX Archive Network}
-                    \item \href{https://tex.stackexchange.com/}{TeX Stack Exchange}
-                    \item \href{https://www.overleaf.com/learn}{Overleaf guides}
-                \end{itemize}
-        \end{itemize}
-
     \section{The Basics}
         \begin{itemize}
             \item environments
@@ -172,31 +152,6 @@ table-auto-round,
 
         Can also make use of online table generation tools like \href{https://www.tablesgenerator.com/}{Tables Generator}.
 
-    \section{Additional Helpful Packages}
-        \subsection{siunitx}
-            I strongly recommend using the siunitx package for formatting all units.
-            \\\si{\hertz}
-            \\\SIrange{100}{200}{\nano\meter}
-            \\\SI{100}{\kilo\gram}
-            \\Convenient!
-
-        \subsection{chemformula}
-            A chemical (or nuclear) equation!
-            \begin{equation}
-                \ch{
-                ^{2}H + ^{2}H -> ^{3}He + n^{0}
-                }
-                \label{eqt:nucEnerReleased}
-            \end{equation}
-
-        \subsection{minted}
-            Include blocks of code or source files with syntax highlighting.
-            \begin{listing}[H]
-                \inputminted{python}{./demo.py}
-                \caption{An example of a block of python included and highlighted with the package minted}
-                \label{lst:pythonExample}
-            \end{listing}
-
     \section{Bibliographies}
         \subsection{Citations}
             Here I am making a statement that should be backed up with a reference placed right at the end. \cite{ref:01}
@@ -228,59 +183,103 @@ table-auto-round,
                 \item many others
             \end{itemize}
 
+    \section{The Power of Open Source}
+        \begin{itemize}
+            \item Widely available and extraordinarily flexible
+            \item Enormous and extremely helpful user base - debugging less of an exercise in pulling teeth
+                \begin{itemize}
+                    \item \href{https://www.ctan.org/}{CTAN - Comprehensive TeX Archive Network}
+                    \item \href{https://tex.stackexchange.com/}{TeX Stack Exchange}
+                    \item \href{https://www.overleaf.com/learn}{Overleaf guides}
+                \end{itemize}
+            \item Continuous extension via community created packages
+        \end{itemize}
 
-    \section{Starting Your Document}
-        To start your document, you need to first declare your document class, then list any packages you'd like to include.
-        Here are a few base packages that you should (almost) always import:
-        \begin{enumerate}
-            \item geometry
-            \item hyperref
-            \item amsmath
-            \item amsfonts
-            \item amssymb
-            \item inputenc
-            \item fontenc
-            \item biblatex
-            \item float
-            \item graphicx
-            \item booktabs
-            \item csvsimple
-            \item siunitx
-            \item minted
-            \item chemformula
-        \end{enumerate}
-        Next, start the document environments, and you're off!
-        All together, your base document will look like the code in Listing \ref{lst:baseDoc} shown below.
-        \begin{listing}[H]
-            \begin{centering}
-                \begin{minted}{tex}
-                    \documentclass[hidelinks, 12pt]{article}
+        \subsection{Recommended Packages}
+        \subsubsection{siunitx}
+            I strongly recommend using the siunitx package for formatting all units.
+            \\\si{\hertz}
+            \\\SIrange{100}{200}{\nano\meter}
+            \\\SI{100}{\kilo\gram}
+            \\Convenient!
 
-                    \usepackage{import}
-                    \usepackage{geometry}
-                    \usepackage{hyperref}
-                    \usepackage[tbtags]{amsmath}
-                    \usepackage{amsfonts}
-                    \usepackage{amssymb}
-                    \usepackage[utf8]{inputenc}
-                    \usepackage[T1]{fontenc}
-                    \usepackage[style=ieee,backend=biber]{biblatex}
-                    \usepackage{float}
-                    \usepackage{graphicx}
-                    \usepackage{booktabs}
-                    \usepackage{csvsimple}
-                    \usepackage{siunitx}
-                    \usepackage{minted}
-                    \usepackage{chemformula}
+        \subsubsection{tabularray}
+            The most complete and modern table formatting package.
 
-                    \begin{document}
-                        <your document code>
-                    \end{document}
-                \end{minted}
-            \end{centering}
-            \caption{Base code for a \LaTeX document}
-            \label{lst:baseDoc}
-        \end{listing}
+        \subsubsection{csvsimple}
+            Ease preparation of tables by importing csv files directly
+
+        \subsubsection{chemformula}
+            A chemical (or nuclear) equation!
+            \begin{equation}
+                \ch{
+                ^{2}H + ^{2}H -> ^{3}He + n^{0}
+                }
+                \label{eqt:nucEnerReleased}
+            \end{equation}
+
+        \subsubsection{minted}
+            Include blocks of code or source files with syntax highlighting.
+            \begin{listing}[H]
+                \inputminted{python}{./demo.py}
+                \caption{An example of a block of python included and highlighted with the package minted}
+                \label{lst:pythonExample}
+            \end{listing}
+
+
+    \section{As For Modularity and Reusability...}
+        \subsection{Preamble Starting Point}
+            To start your document, you need to first declare your document class, then list any packages you'd like to include.
+            Here are a few base packages that you should (almost) always import:
+            \begin{enumerate}
+                \item geometry
+                \item hyperref
+                \item amsmath
+                \item amsfonts
+                \item amssymb
+                \item inputenc
+                \item fontenc
+                \item biblatex
+                \item float
+                \item graphicx
+                \item booktabs
+                \item csvsimple
+                \item siunitx
+                \item minted
+                \item chemformula
+            \end{enumerate}
+            Next, start the document environments, and you're off!
+            All together, your base document will look like the code in Listing \ref{lst:baseDoc} shown below.
+            \begin{listing}[H]
+                \begin{centering}
+                    \begin{minted}{tex}
+                        \documentclass[hidelinks, 12pt]{article}
+
+                        \usepackage{import}
+                        \usepackage{geometry}
+                        \usepackage{hyperref}
+                        \usepackage[tbtags]{amsmath}
+                        \usepackage{amsfonts}
+                        \usepackage{amssymb}
+                        \usepackage[utf8]{inputenc}
+                        \usepackage[T1]{fontenc}
+                        \usepackage[style=ieee,backend=biber]{biblatex}
+                        \usepackage{float}
+                        \usepackage{graphicx}
+                        \usepackage{booktabs}
+                        \usepackage{csvsimple}
+                        \usepackage{siunitx}
+                        \usepackage{minted}
+                        \usepackage{chemformula}
+
+                        \begin{document}
+                            <your document code>
+                        \end{document}
+                    \end{minted}
+                \end{centering}
+                \caption{Base code for a \LaTeX document}
+                \label{lst:baseDoc}
+            \end{listing}
 
     \section{What's Next?}
         \begin{itemize}
