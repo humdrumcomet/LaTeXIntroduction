@@ -33,8 +33,11 @@ table-figures-decimal = 2,
 table-auto-round,
 }%
 \DeclareSIUnit\torr{Torr} % Custom unit definition
+\usepackage{xcolor} % to access the named colour LightGray
+\definecolor{LightGray}{gray}{0.9}
 \usepackage{minted} % inclusion of code blocks with syntax highlighting and
-\setminted{linenos, autogobble, fontsize=\footnotesize, breaklines=true} % set global options for minted environments
+\setminted{linenos=flase, autogobble, fontsize=\small, breaklines=true, bgcolor=LightGray} % set global options for minted environments
+\setmintedinline{bgcolor={}}
 \usepackage{chemformula} % for writing chemical formulae
 \usepackage[useregional]{datetime2}
 
@@ -61,20 +64,7 @@ table-auto-round,
     \clearpage
     \tableofcontents
     \clearpage
-    \section{The Basics}
-        \begin{itemize}
-            \item environments
-                \begin{minted}[linenos=false]{tex}
-                    \begin{<environment>}
-                        <your code>
-                    \end{<environment>}
-                \end{minted}
-            \item commands
-                \begin{minted}[linenos=false]{tex}
-                    \command[<some options>]{<arguments>}
-                \end{minted}
-        \end{itemize}
-
+    
     \section{Sections...}
         \subsection{...and subsections...}
             \subsubsection{...and subsubsections...}
@@ -152,15 +142,20 @@ table-auto-round,
 
         Can also make use of online table generation tools like \href{https://www.tablesgenerator.com/}{Tables Generator}.
 
+    \section{In-document References}
+        References to items in your document is handled using two parts.
+        A label inserted with the \mintinline{tex}{\label{<your label>}} command, and the \mintinline{tex}{\ref{<your label>}} command.
+        With it, you can refer to equations like the Fourier transform from earlier (Equation \ref{eqt:fourTrans}), or a figure (Figure \ref{fig:test}), table (Table \ref{Table:Parameters}), or any of the many things with automatic counters.
     \section{Bibliographies}
         \subsection{Citations}
-            Here I am making a statement that should be backed up with a reference placed right at the end. \cite{ref:01}
+            Citations are inserted using the \mintinline{tex}{\cite{<your reference>}}. Here I am making a statement that should be backed up with a reference placed right at the end. \cite{ref:01}
             Now it will show up in the bibliography and the reference above will link to it and be correctly numbered.
             Style can be changed at any time up above in the biblatex command.
+            \mintinline{tex}{\usepackage[style=ieee,backend=biber]{biblatex}}
         \subsection{Writing the .bib File}
             \begin{listing}[H]
                 \begin{centering}
-                    \begin{minted}{bibtex}
+                    \begin{minted}[linenos=false]{bibtex}
                         @incollection{ref:01,
                         author = {Berger, M.J. and Hubbell, J.H. and Seltzer, S.M. and Chang, J. and Coursey, J.S. and Sukumar, R. and Zucker, D.S. and Olsen, K.},
                         title = {XCOM: Photon Cross Sections Database},
@@ -229,9 +224,9 @@ table-auto-round,
 
     \section{As For Modularity and Reusability...}
         \subsection{Preamble Starting Point}
-            \begin{minipage}{\textwidth}
-                \begin{minipage}{0.4\textwidth}%
+                \begin{minipage}{0.4\linewidth}%
                     \begin{enumerate}
+                        \item import
                         \item geometry
                         \item hyperref
                         \item amsmath
@@ -247,10 +242,11 @@ table-auto-round,
                         \item siunitx
                         \item minted
                         \item chemformula
+                        \item tabularray
                     \end{enumerate}
                 \end{minipage}
-                \begin{minipage}{0.6\textwidth}%
-                    \begin{minted}{tex}
+                \begin{minipage}{0.6\linewidth}%
+                    \begin{minted}[linenos=false,fontsize=\normalsize]{tex}
                         \usepackage{import}
                         \usepackage{geometry}
                         \usepackage{hyperref}
@@ -259,17 +255,18 @@ table-auto-round,
                         \usepackage{amssymb}
                         \usepackage[utf8]{inputenc}
                         \usepackage[T1]{fontenc}
-                        \usepackage[style=ieee,backend=biber]{biblatex}
+                        \usepackage[style=ieee, backend=biber]{biblatex}
                         \usepackage{float}
                         \usepackage{graphicx}
                         \usepackage{booktabs}
-                        \usepackage{csvsimple}
+                        \usepackage{csvsimple-l3}
                         \usepackage{siunitx}
                         \usepackage{minted}
                         \usepackage{chemformula}
+                        \usepackage{tabularray}
+                        \UseTblrLibrary{booktabs, siunitx, amsmath, diagbox}
                     \end{minted}
                 \end{minipage}
-            \end{minipage}
 
     \section{What's Next?}
         \begin{itemize}
